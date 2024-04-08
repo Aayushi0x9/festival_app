@@ -1,3 +1,4 @@
+import 'package:festival_app/Model/model_class.dart';
 import 'package:festival_app/headers.dart';
 
 class FestivalPage extends StatefulWidget {
@@ -11,6 +12,8 @@ class _FestivalPageState extends State<FestivalPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    festivalModel f =
+        ModalRoute.of(context)!.settings.arguments as festivalModel;
     return Scaffold(
       appBar: AppBar(
         title: Text('Festival Photos'),

@@ -17,8 +17,7 @@ class festivalModel {
     required this.story,
   });
 
-  factory festivalModel.formMap({required Map<String, dynamic> data}) =>
-      festivalModel(
+  factory festivalModel.formMap({required Map data}) => festivalModel(
         name: data['name'],
         date: data['date'],
         slogan: data['slogan'],

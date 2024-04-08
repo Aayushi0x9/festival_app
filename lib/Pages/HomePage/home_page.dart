@@ -29,45 +29,39 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 0.2,
-                  ),
-                  ...List.generate(
-                    festivalData.length,
-                    // festivalData.length,
-                    (index) => GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, MyRoutes.festivalPage,
-                            arguments: festivalData[index]);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(bottom: 5),
-                        height: size.height * 0.2,
-                        width: size.width,
-                        color: Colors.grey,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                festival[index].images,
-                              ),
-                              fit: BoxFit.fill),
-                        ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 0.2,
+            ),
+            ...List.generate(
+              festivalData.length,
+              // festivalData.length,
+              (index) => GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, MyRoutes.festivalPage,
+                      arguments: festivalData[index]);
+                },
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 5),
+                  height: size.height * 0.2,
+                  width: size.width * 0.5,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        festivalData[0]['images'],
                       ),
+                      fit: BoxFit.fill,
                     ),
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
