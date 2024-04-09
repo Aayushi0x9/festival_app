@@ -12,25 +12,28 @@ class _FestivalPageState extends State<FestivalPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    festivalModel f =
+    festivalModel f1 =
         ModalRoute.of(context)!.settings.arguments as festivalModel;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Festival Photos'),
+        title: Text(f1.name),
         centerTitle: true,
         actions: [
           FilledButton.icon(
-              onPressed: () {
-                Navigator.of(context).pushNamed(MyRoutes.downloadPage);
-              },
-              icon: Icon(Icons.download_sharp),
-              label: Text('Save'))
+            onPressed: () {
+              Navigator.of(context).pushNamed(MyRoutes.downloadPage);
+            },
+            icon: Icon(Icons.download_sharp),
+            label: Text('Save'),
+          ),
         ],
       ),
       body: Stack(
         children: [
           Container(
             padding: EdgeInsets.all(16),
+            height: size.height,
+            width: size.width,
             child: Column(
               children: [
                 SingleChildScrollView(

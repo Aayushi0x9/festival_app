@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Festival'),
+        title: Text('Festivals'),
         centerTitle: true,
         leading: Icon(Icons.menu),
         actions: [
@@ -24,39 +24,41 @@ class _HomePageState extends State<HomePage> {
             },
             icon: Icon(Icons.save_alt),
           ),
-          SizedBox(
-            width: 0.08,
-          ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 0.2,
             ),
             ...List.generate(
               festivalData.length,
-              // festivalData.length,
               (index) => GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, MyRoutes.festivalPage,
                       arguments: festivalData[index]);
                 },
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 5),
+                  margin:
+                      const EdgeInsets.only(bottom: 10, right: 16, left: 16),
                   height: size.height * 0.2,
-                  width: size.width * 0.5,
+                  width: size.width,
                   decoration: BoxDecoration(
-                    color: Colors.grey,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        festivalData[0]['images'],
-                      ),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(4, 4),
+                          blurRadius: 2,
+                        ),
+                      ],
+                      image: DecorationImage(
+                          image: NetworkImage(
+                            festivalData[index]['image'],
+                          ),
+                          fit: BoxFit.fill)),
                 ),
               ),
             ),
